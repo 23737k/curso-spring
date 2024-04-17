@@ -25,5 +25,7 @@ Esta vez inyectaremos campos. La diferencia entre un campo y una dependencia, es
 
 Los pasos son similares al método por setter:
   - Crear en la clase, los setters de los campos
-  - configurar en el xml la inyeccion de campos, indicando un value (valor por defecto) 
+  - configurar en el xml la inyeccion de campos, indicando un value (valor por defecto)
+
+**Además existe una manera de inyectar valores en los campos, mediante un [archivo de propiedades](src/main/resources/datosEmpresa.propiedades)**
 
