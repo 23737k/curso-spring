@@ -9,5 +9,14 @@
     http://www.springframework.org/schema/context/spring-context-3.1.xsd
 ">
 
+<!-- Creamos los beans para JefeEmpleado e Informe -->
+
+<bean id="miInforme" class="dominio.Informe"></bean>
+
+<bean id="miJefeEmpleado" class="dominio.JefeEmpleado">
+<!-- Dentro del bean de JefeEmpleado , indicamos que por constructor se le va a pasar un informe -->
+	<constructor-arg ref="miInforme"></constructor-arg>
+</bean>
+
 
 </beans>
