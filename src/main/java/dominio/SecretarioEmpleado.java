@@ -1,7 +1,13 @@
 package dominio;
 
 public class SecretarioEmpleado implements Empleado {
-
+	
+	private CreacionDeInforme informe;
+	
+	public void setInforme(CreacionDeInforme informe) {
+		this.informe = informe;
+	}
+	
 	@Override
 	public String getTareas() {
 		return "Hago las tareas del secretario";
@@ -9,8 +15,8 @@ public class SecretarioEmpleado implements Empleado {
 
 	@Override
 	public String getInforme() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Informe creado por el Secretario: " + informe.getInforme();
 	}
+
 
 }

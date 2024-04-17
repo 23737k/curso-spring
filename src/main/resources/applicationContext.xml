@@ -9,6 +9,7 @@
     http://www.springframework.org/schema/context/spring-context-3.1.xsd
 ">
 
+<!-- INYECCION POR CONSTRUCTOR -->
 <!-- Creamos los beans para JefeEmpleado e Informe -->
 
 <bean id="miInforme" class="dominio.Informe"></bean>
@@ -16,6 +17,14 @@
 <bean id="miJefeEmpleado" class="dominio.JefeEmpleado">
 <!-- Dentro del bean de JefeEmpleado , indicamos que por constructor se le va a pasar un informe -->
 	<constructor-arg ref="miInforme"></constructor-arg>
+</bean>
+
+
+<!-- INYECCION POR SETTER -->
+
+<bean id="miSecretarioEmpleado" class="dominio.SecretarioEmpleado">
+<!-- Ademas de tener una referencia al bean, debe tener un 'name' que debe llamarse como el setter pero sin el 'set' y con miniscula al inicio-->
+	<property name="informe" ref="miInforme"></property>		
 </bean>
 
 
