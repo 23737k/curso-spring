@@ -25,6 +25,10 @@
 <bean id="miSecretarioEmpleado" class="dominio.SecretarioEmpleado">
 <!-- Ademas de tener una referencia al bean, debe tener un 'name' que debe llamarse como el setter pero sin el 'set' y con miniscula al inicio-->
 	<property name="informe" ref="miInforme"></property>		
+	<!-- INYECCION DE CAMPOS -->
+	<property name="nombreEmpresa" value="Google inc"></property>	<!-- En la inyeccion de campos debe haber un value -->
+	<property name="email" value="secretaria@gmail.com"></property>
+	
 </bean>
 
 

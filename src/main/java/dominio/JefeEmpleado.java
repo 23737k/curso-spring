@@ -15,8 +15,17 @@ public class JefeEmpleado implements Empleado {
 
 	@Override
 	public String getInforme() {
-		// TODO Auto-generated method stub
 		return "Informe creado por el Jefe: " + informeNuevo.getInforme();
 	}
+
+	public CreacionDeInforme getInformeNuevo() {
+		return informeNuevo;
+	}
+
+	public void setInformeNuevo(CreacionDeInforme informeNuevo) {
+		this.informeNuevo = informeNuevo;
+	}
+
+	
 
 }
