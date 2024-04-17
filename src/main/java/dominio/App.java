@@ -1,13 +1,16 @@
 package dominio;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import dominio.config.ConfigFile;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class App {
 
 	public static void main(String[] args) {
 
-		ClassPathXmlApplicationContext contexto = new ClassPathXmlApplicationContext("applicationContext.xml");
+		//ClassPathXmlApplicationContext contexto = new ClassPathXmlApplicationContext("applicationContext.xml");
 
+		//Utilizamos una clase como nuestro archivo de config
+		AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext(ConfigFile.class);
 		
 		Empleado empleado1 = contexto.getBean("JefeEmpleado", Empleado.class);
 
