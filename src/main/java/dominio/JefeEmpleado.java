@@ -2,10 +2,10 @@ package dominio;
 
 public class JefeEmpleado implements Empleado {
 	
-	private CreacionDeInforme informeNuevo;
+	private CreacionDeInforme informe;
 	
-	public JefeEmpleado(CreacionDeInforme informeNuevo) {
-		this.informeNuevo = informeNuevo;
+	public JefeEmpleado(CreacionDeInforme informe) {
+		this.informe = informe;
 	}
 	
 	@Override
@@ -15,15 +15,11 @@ public class JefeEmpleado implements Empleado {
 
 	@Override
 	public String getInforme() {
-		return "Informe creado por el Jefe: " + informeNuevo.getInforme();
+		return "Informe creado por el Jefe: " + informe.getInforme();
 	}
 
-	public CreacionDeInforme getInformeNuevo() {
-		return informeNuevo;
-	}
-
-	public void setInformeNuevo(CreacionDeInforme informeNuevo) {
-		this.informeNuevo = informeNuevo;
+	public void setInforme(CreacionDeInforme informe) {
+		this.informe = informe;
 	}
 
 	

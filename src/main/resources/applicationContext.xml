@@ -9,6 +9,11 @@
     http://www.springframework.org/schema/context/spring-context-3.1.xsd
 ">
 
+<!-- CARGAMOS EL ARCHIVO DE PROPIEDADES ANTES DEFINIR LOS BEANS  -->
+<context:property-placeholder location="datosEmpresa.propiedades"/>
+
+
+
 <!-- INYECCION POR CONSTRUCTOR -->
 <!-- Creamos los beans para JefeEmpleado e Informe -->
 
@@ -28,7 +33,13 @@
 	<!-- INYECCION DE CAMPOS -->
 	<property name="nombreEmpresa" value="Google inc"></property>	<!-- En la inyeccion de campos debe haber un value -->
 	<property name="email" value="secretaria@gmail.com"></property>
-	
+</bean>
+
+<!-- INYECCION UTILIZANDO EL ARCHIVO DE PROPIEDADES "datoEmpresa.propiedades"-->
+<bean id="miDirectorEmpleado" class="dominio.DirectorEmpleado">
+	<property name="informe" ref="miInforme"></property>		<!-- Colocamos entre ${} el nombre de la propiedad que figura en el archivo -->
+	<property name="nombreEmpresa" value="${nombreEmpresa}"></property>
+	<property name="email" value="${email}"></property>
 </bean>
 
 
