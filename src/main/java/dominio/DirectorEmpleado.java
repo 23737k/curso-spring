@@ -1,9 +1,18 @@
 package dominio;
 
+import dominio.informes.CreacionDeInforme;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class DirectorEmpleado implements Empleado {
-	private String email;
-	private String nombreEmpresa;
-	
+	@Autowired
+	@Qualifier("informeTrimestre2")
+	private CreacionDeInforme informe;
+
 	@Override
 	public String getTareas() {
 		return "Hago las tareas del Director";
@@ -11,23 +20,6 @@ public class DirectorEmpleado implements Empleado {
 
 	@Override
 	public String getInforme() {
-		return "";
+		return informe.getInforme() ;
 	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getNombreEmpresa() {
-		return nombreEmpresa;
-	}
-
-	public void setNombreEmpresa(String nombreEmpresa) {
-		this.nombreEmpresa = nombreEmpresa;
-	}
-
 }
