@@ -1,7 +1,6 @@
 package dominio;
 
 public class DirectorEmpleado implements Empleado {
-	private CreacionDeInforme informe;
 	private String email;
 	private String nombreEmpresa;
 	
@@ -10,14 +9,6 @@ public class DirectorEmpleado implements Empleado {
 		return "Hago las tareas del Director";
 	}
 
-	@Override
-	public String getInforme() {
-		return "Informe creado por el Director: " + informe.getInforme();
-	}
-
-	public void setInforme(CreacionDeInforme informe) {
-		this.informe = informe;
-	}
 
 	public String getEmail() {
 		return email;

@@ -9,38 +9,8 @@
     http://www.springframework.org/schema/context/spring-context-3.1.xsd
 ">
 
-<!-- CARGAMOS EL ARCHIVO DE PROPIEDADES ANTES DEFINIR LOS BEANS  -->
-<context:property-placeholder location="datosEmpresa.propiedades"/>
-
-
-
-<!-- INYECCION POR CONSTRUCTOR -->
-<!-- Creamos los beans para JefeEmpleado e Informe -->
-
-<bean id="miInforme" class="dominio.Informe"></bean>
-
-<bean id="miJefeEmpleado" class="dominio.JefeEmpleado">
-<!-- Dentro del bean de JefeEmpleado , indicamos que por constructor se le va a pasar un informe -->
-	<constructor-arg ref="miInforme"></constructor-arg>
-</bean>
-
-
-<!-- INYECCION POR SETTER -->
-
-<bean id="miSecretarioEmpleado" class="dominio.SecretarioEmpleado">
-<!-- Ademas de tener una referencia al bean, debe tener un 'name' que debe llamarse como el setter pero sin el 'set' y con miniscula al inicio-->
-	<property name="informe" ref="miInforme"></property>		
-	<!-- INYECCION DE CAMPOS -->
-	<property name="nombreEmpresa" value="Google inc"></property>	<!-- En la inyeccion de campos debe haber un value -->
-	<property name="email" value="secretaria@gmail.com"></property>
-</bean>
-
-<!-- INYECCION UTILIZANDO EL ARCHIVO DE PROPIEDADES "datoEmpresa.propiedades"-->
-<bean id="miDirectorEmpleado" class="dominio.DirectorEmpleado">
-	<property name="informe" ref="miInforme"></property>		<!-- Colocamos entre ${} el nombre de la propiedad que figura en el archivo -->
-	<property name="nombreEmpresa" value="${nombreEmpresa}"></property>
-	<property name="email" value="${email}"></property>
-</bean>
+<!-- Esto le indicará a Spring en que paquete debe escanear en busca de annotations -->
+<context:component-scan base-package="dominio"></context:component-scan>
 
 
 </beans>
