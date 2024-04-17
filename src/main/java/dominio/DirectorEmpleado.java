@@ -9,6 +9,10 @@ public class DirectorEmpleado implements Empleado {
 		return "Hago las tareas del Director";
 	}
 
+	@Override
+	public String getInforme() {
+		return "";
+	}
 
 	public String getEmail() {
 		return email;

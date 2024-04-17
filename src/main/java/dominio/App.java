@@ -13,6 +13,7 @@ public class App {
 		Empleado empleado1 = contexto.getBean("JefeEmpleado", Empleado.class);  
 		
 		System.out.println(empleado1.getTareas());
+		System.out.println(empleado1.getInforme());
 		
 		contexto.close();
 		

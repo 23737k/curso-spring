@@ -1,5 +1,8 @@
 package dominio;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Informe implements CreacionDeInforme {
 
 	@Override

@@ -10,7 +10,11 @@ public class SecretarioEmpleado implements Empleado {
 		return "Hago las tareas del secretario";
 	}
 
-	
+	@Override
+	public String getInforme() {
+		return "";
+	}
+
 	public String getEmail() {
 		return email;
 	}
