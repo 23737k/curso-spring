@@ -11,13 +11,18 @@ public class App {
 
 		//Utilizamos una clase como nuestro archivo de config
 		AnnotationConfigApplicationContext contexto = new AnnotationConfigApplicationContext(ConfigFile.class);
-		
-		Empleado empleado1 = contexto.getBean("JefeEmpleado", Empleado.class);
 
+		/*  Inyeccion de dependencias  */
+		System.out.println("Inyeccion de dependencias");
+		Empleado empleado1 = contexto.getBean("JefeEmpleado", Empleado.class);
 		System.out.println(empleado1.getTareas());
 		System.out.println(empleado1.getInforme());
 
-
+		/*  Inyeccion de campos  */
+		System.out.println("\nInyeccion de campos");
+		SecretarioEmpleado secretarioEmpleado = contexto.getBean("secretarioEmpleado", SecretarioEmpleado.class);
+		System.out.println(secretarioEmpleado.getEmail());
+		System.out.println(secretarioEmpleado.getNombreEmpresa());
 
 	/*---------------------------------------------------------------------------------------------------------------------------------------------*/
 		/* Singleton vs Prototype */
