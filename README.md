@@ -19,3 +19,11 @@ Ademas al utilizar interfaces (Empleado y CreacionInforme) nos desacoplamos de l
 [main](src/main/java/dominio/App.java) 
 
 [applicationContext](src/main/resources/applicationContext.xml)
+
+# Inyección de campos
+Esta vez inyectaremos campos. La diferencia entre un campo y una dependencia, es que este último es un objeto. Mientras que un campo es un String, Int, Date, etc.
+
+Los pasos son similares al método por setter:
+  - Crear en la clase, los setters de los campos
+  - configurar en el xml la inyeccion de campos, indicando un value (valor por defecto) 
+
