@@ -1,8 +1,7 @@
 ### Eclipse ###
 .idea/
 *.ipr
-Mi-Huella.iml
-Mi-Huella.ipr
+*.iml
 .metadata
 bin/
 tmp/
