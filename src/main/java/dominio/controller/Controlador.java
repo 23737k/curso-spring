@@ -8,6 +8,6 @@ public class Controlador {
 	 
 	@GetMapping("/")
 	public String user() {
-		return "index";
+		return "Index";
 	}
 }

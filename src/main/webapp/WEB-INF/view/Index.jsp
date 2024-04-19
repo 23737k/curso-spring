@@ -8,5 +8,7 @@
 </head>
 <body>
 HOLA MUNDO!!!!!!!!!!!!!!!!!!!!!
+
+<a href="formulario">Ir a formulario</a>
 </body>
 </html>

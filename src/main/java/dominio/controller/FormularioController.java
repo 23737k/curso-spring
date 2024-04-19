@@ -4,9 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HolaAlumnoController {
+public class FormularioController {
 	@RequestMapping("/formulario")
 	public String mostrarFormulario() {
-		return "HolaAlumnosFormulario";
+		return "Formulario";
+	}
+
+	@RequestMapping("/saludo")
+	public String saludo() {
+		return "Saludo";
 	}
 }

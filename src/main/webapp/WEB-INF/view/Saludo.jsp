@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-Ingrese su nombre
-<input type="text">
+	Hola: ${param.nombre} 
+	<br>
+	Bienvenido al curso de Spring!
 </body>
 </html>
