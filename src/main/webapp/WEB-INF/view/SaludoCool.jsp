@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- Aca obtengo del modelo saludoCool y lo muestro en la vista. Solo basta con escribir el nombre de la variable-->
-${saludoCool}
+<h1>${saludoCool}</h1>
 <br>
 <img style="width:300px;" alt="2 kiwis" src="kiwis.jpg">
 </body>

@@ -7,8 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-HOLA MUNDO!!!!!!!!!!!!!!!!!!!!!
-
+<h1>HOLA MUNDO!!!!!!!!!!!!!!!!!!!!!</h1>
+<br>
 <a href="formulario">Ir a formulario</a>
 </body>
 </html>
