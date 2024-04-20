@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- Aca obtengo mediante un tag la queryParam nombre. Cada vez que quiera obtener queryParams utilizo param.<nombreDeQueryParam> -->
-	Hola: ${param.nombre} 
-	<br>
-	Bienvenido al curso de Spring!
+<!-- Aca obtengo del modelo saludoCool y lo muestro en la vista. Solo basta con escribir el nombre de la variable-->
+${saludoCool}
+<br>
+<img style="width:300px;" alt="2 kiwis" src="kiwis.jpg">
 </body>
 </html>

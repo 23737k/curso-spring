@@ -11,7 +11,7 @@
 <h1>Registration Form</h1>
         <p class="legend" >Please fill out this form with the required information</p>
         <main>
-            <form action="saludo">
+            <form action="saludoCool"> <!-- cambiar por saludo o saludoCool -->
                 <section class="section-one">
                     <article class="input">
                         <label for="nombre">Ingresa tu nombre:</label>
