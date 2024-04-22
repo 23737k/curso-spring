@@ -11,9 +11,9 @@
 <body>
     <form:form action="procesarFormulario" modelAttribute="unAlumno" class="container"> 
         <legend>Complete sus datos</legend>
-       	Nombre: <form:input path="nombre"/>				
+       	<label for="nombre" >Nombre: </label><form:input id="nombre" path="nombre"/>	<form:errors path="nombre" style="color:red;"/>			
        	<br>
-       	Apellido: <form:input path="apellido"/>
+       	<label for="apellido">Apellido:</label> <form:input id="apellido" path="apellido"/>
        	<br><br>
        	Materia Optativa: 
        	<form:select path="materiaOptativa">
@@ -25,14 +25,14 @@
        	<br><br>
        	Lugar de Estudios: <br>
        	<form:radiobutton id="argentina" value="Argentina" path="lugarDeEstudio"/> <label for="argentina"> Argentina</label> <br>
-       	<form:radiobutton value="Chile" path="lugarDeEstudio"/> Chile <br>
-       	<form:radiobutton value="Brasil" path="lugarDeEstudio"/> Brasil <br>
+       	<form:radiobutton id="chile" value="Chile" path="lugarDeEstudio"/> <label for="chile"> Chile</label><br>
+       	<form:radiobutton id="brasil" value="Brasil" path="lugarDeEstudio"/> <label for="brasil">Brasil</label>  <br>
        <br><br>
        Idiomas: <br>
-       <form:checkbox path="idiomas" value="ingles"/> Ingles <br>
-       <form:checkbox path="idiomas" value="frances"/> Frances <br>
-       <form:checkbox path="idiomas" value="aleman"/> Aleman <br>
-       <form:checkbox path="idiomas" value="chino"/> Chino <br>
+       <form:checkbox id="ingles" path="idiomas" value="ingles"/> <label for="ingles">Ingles</label>  <br>
+       <form:checkbox id="frances" path="idiomas" value="frances"/> <label for="frances">Frances</label> <br>
+       <form:checkbox id="aleman" path="idiomas" value="aleman"/> <label for="aleman">Aleman</label> <br>
+       <form:checkbox id="chino" path="idiomas" value="chino"/> <label for="chino">Chino</label> <br>
        <br><br><br>
               	
         <input type="submit" value="Enviar">

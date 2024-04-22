@@ -2,8 +2,12 @@ package dominio;
 
 import java.util.List;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class Alumno {
-	
+	@NotNull
+	@Size(min=2, message="El campo nombre debe tener una longitud minima de 2 caracteres")
 	private String nombre;
 	private String apellido;
 	private String materiaOptativa;
