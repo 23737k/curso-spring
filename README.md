@@ -1,24 +1,47 @@
-## Spring MVC
-Modelo:
+# MVC Tags
+Para poder utilizar esta funcionalidad debemos colocar esta directiva al inicio de nuestro .jsp
+``` jsp
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+```
 
-  El objeto de tipo  Model en Spring, es un contenedor que contiene los datos que irán a la vista. Estos datos pueden ser Objetos de Java, Información  obtenida de la BBDD, colecciones, etc. Sin embargo en MVC, el modelo representa el dominio junto con la persistencia
-
-Vista: 
-
-  Son aquellos archivos que se muestran al usuario en el Front. Consta de archivos html o jsp
-
-Controlador:
-
-  son aquellos que manejan los endpoints. Cada uno maneja un endpoint distinto (Ej: "/", "/formulario"), e interactúa con el Modelo para luego devolver una vista.  
-
+- ### Formulario
+  ``` jsp
+  <form:form path="attributeName" ></form:form>
+  ```
   
-  [Controlador](src/main/java/dominio/controller/Controlador.java)  
+  Se utiliza para formularios. En path colocaremos el nombre del atributo que agregamos previamente al modelo. Este atributo se trata de un objeto Java/bean
+- ### Input
+  ```jsp
+  <form:input path="property"/>
+  ```
   
-  [Index](src/main/webapp/WEB-INF/view/Index.jsp)
-  
-  [FormularioController](src/main/java/dominio/controller/FormularioController.java)
+  Path va a referenciar a los getters y setters de las properties del objeto que agregamos como atributo. El valor de path será el nombre del getter/setter pero sin el get/set y comenzando con minúsculas.
 
-  [Formulario.jsp](src/main/webapp/WEB-INF/view/Formulario.jsp)
+  Cada vez que se cargue el formulario, el path llamará al getter de la propiedad. Cada vez que se envíe el formulario, llamará al setter con el valor que hayamos introducido en el campo.
+- ### Menu Desplegable (Select)
+  ```jsp
+  <form:select path="property">
+      <form:option value="valorDeLaOpcion" label="descripcionDeLaOpcion"/>
+  </form:select>
+  ```
 
-  [SaludoCool](src/main/webapp/WEB-INF/view/SaludoCool.jsp)
-  
+- ### Radio
+  ``` jsp
+  <form:radiobutton path="property" value=""/>
+  ```
+- ### Checkbox
+  ``` jsp
+  <form:checkbox path="" value="">
+  ```
+
+
+# ¿Cómo utilizarlos? 
+1) En el [controller](src/main/java/dominio/controller/AlumnoController.java) creamos el método que se encargará de:
+    - Agregar nuestro objeto al modelo.
+    - Devolvernos la vista que muestra el formulario
+2) En nuestra [vista](src/main/webapp/WEB-INF/view/AlumnoFormulario.jsp) utilizaremos las MVC tags para poder capturar la información y almacenarla en nuestro objeto. Esta debe redirigirnos a una ruta que procese el formulario
+3) En el [controller](src/main/java/dominio/controller/AlumnoController.java) creamos el método que se encargará de:
+   - Procesar el formulario: rescatar la informacion del objeto almacenado en el modelo y operar sobre él (almacenar en bd, llamar a métodos, etc.)
+   - Devolver la vista de confirmación del formulario: esta vista se muestra despues de enviar el formulario. Puede o no, hacer uso del objeto rescatado mediante jsp tags
+4) En la [vista](src/main/webapp/WEB-INF/view/RegistroConfirmacion.jsp), podemos invocar ahora a nuestro objeto mediante jsp tags: `${attributeName.property}`
+
