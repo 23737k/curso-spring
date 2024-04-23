@@ -11,6 +11,7 @@
 <br>
 Nombre: ${unAlumno.nombre} <br>
 Apellido: ${unAlumno.apellido} <br>
+Edad: ${unAlumno.edad} <br>
 Materia Optativa: ${unAlumno.materiaOptativa} <br>
 Lugar De Estudio: ${unAlumno.lugarDeEstudio} <br>
 Idiomas: ${unAlumno.idiomas}

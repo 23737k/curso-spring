@@ -2,14 +2,20 @@ package dominio;
 
 import java.util.List;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 public class Alumno {
 	@NotNull
 	@Size(min=2, message="El campo nombre debe tener una longitud minima de 2 caracteres")
 	private String nombre;
 	private String apellido;
+	@NotNull
+	@Max(value= 100) 
+	@Min(value=10, message="El campo edad debe tener un valor entre 10-100")
+	private int edad;
+	@NotNull
+	@Email
+	private String email;
 	private String materiaOptativa;
 	private String lugarDeEstudio;
 	private List<String> idiomas;
@@ -26,6 +32,14 @@ public class Alumno {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
+	
+	public int getEdad() {
+		return edad;
+	}
+	public void setEdad(int edad) {
+		this.edad = edad;
+	}
+	
 	public String getMateriaOptativa() {
 		return materiaOptativa;
 	}
@@ -44,6 +58,13 @@ public class Alumno {
 	public void setIdiomas(List<String> idiomas) {
 		this.idiomas = idiomas;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	
 	
 	
