@@ -1,47 +1,19 @@
-# MVC Tags
-Para poder utilizar esta funcionalidad debemos colocar esta directiva al inicio de nuestro .jsp
-``` jsp
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+# Validacion de formularios 
+Para comenzar debemos agregar la siguiente dependencia a nuestro pom.xml
+``` xml
+<dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-validation</artifactId>
+    </dependency>
 ```
 
-- ### Formulario
-  ``` jsp
-  <form:form path="attributeName" ></form:form>
-  ```
-  
-  Se utiliza para formularios. En path colocaremos el nombre del atributo que agregamos previamente al modelo. Este atributo se trata de un objeto Java/bean
-- ### Input
-  ```jsp
-  <form:input path="property"/>
-  ```
-  
-  Path va a referenciar a los getters y setters de las properties del objeto que agregamos como atributo. El valor de path será el nombre del getter/setter pero sin el get/set y comenzando con minúsculas.
+Los pasos para validar son:
 
-  Cada vez que se cargue el formulario, el path llamará al getter de la propiedad. Cada vez que se envíe el formulario, llamará al setter con el valor que hayamos introducido en el campo.
-- ### Menu Desplegable (Select)
-  ```jsp
-  <form:select path="property">
-      <form:option value="valorDeLaOpcion" label="descripcionDeLaOpcion"/>
-  </form:select>
-  ```
+1) Especificar las propiedades a validar en la [clase](src/main/java/dominio/Alumno.java) correspondiente
+2) Especificar validacion en el [controller](src/main/java/dominio/controller/AlumnoController.java)
+3) Especificar el [mensaje de validacion](src/main/webapp/WEB-INF/view/AlumnoFormulario.jsp) en el formulario de registro con
+   ``` jsp
+   <form:errors path="property"/>
+   ```
 
-- ### Radio
-  ``` jsp
-  <form:radiobutton path="property" value=""/>
-  ```
-- ### Checkbox
-  ``` jsp
-  <form:checkbox path="" value="">
-  ```
-
-
-# ¿Cómo utilizarlos? 
-1) En el [controller](src/main/java/dominio/controller/AlumnoController.java) creamos el método que se encargará de:
-    - Agregar nuestro objeto al modelo.
-    - Devolvernos la vista que muestra el formulario
-2) En nuestra [vista](src/main/webapp/WEB-INF/view/AlumnoFormulario.jsp) utilizaremos las MVC tags para poder capturar la información y almacenarla en nuestro objeto. Esta debe redirigirnos a una ruta que procese el formulario
-3) En el [controller](src/main/java/dominio/controller/AlumnoController.java) creamos el método que se encargará de:
-   - Procesar el formulario: rescatar la informacion del objeto almacenado en el modelo y operar sobre él (almacenar en bd, llamar a métodos, etc.)
-   - Devolver la vista de confirmación del formulario: esta vista se muestra despues de enviar el formulario. Puede o no, hacer uso del objeto rescatado mediante jsp tags
-4) En la [vista](src/main/webapp/WEB-INF/view/RegistroConfirmacion.jsp), podemos invocar ahora a nuestro objeto mediante jsp tags: `${attributeName.property}`
-
+[Más tipos de validaciones aquí](https://medium.com/@himani.prasad016/validations-in-spring-boot-e9948aa6286b)
