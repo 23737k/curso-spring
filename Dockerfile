@@ -3,6 +3,6 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM openjdk:17.0.1-jdk-slim
-COPY --form=build /target/curso-spring-0.0.1-SNAPSHOT.jar curso-spring.jar
+COPY --from=build /target/curso-spring-0.0.1-SNAPSHOT.jar curso-spring.jar
 EXPOSE 9090
 ENTRYPOINT ["java","-jar","curso-spring.jar"]
