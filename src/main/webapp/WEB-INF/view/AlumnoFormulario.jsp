@@ -15,7 +15,6 @@
        	<br>
        	<label for="apellido">Apellido:</label> <form:input id="apellido" path="apellido"/>
        	<br><br>
-       	<label for="edad">Edad:</label> <form:input type="number" id="edad" path="edad"/>	<form:errors path="edad" style="color:red;"/>	
        	<br><br>
        	<label for="email">E-mail:</label> <form:input type="email" id="email" path="email"/>	<form:errors path="email" style="color:red;"/>	
        	<br><br>
