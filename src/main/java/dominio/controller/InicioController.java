@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class InicioController {
 	@RequestMapping("/")
 	public String redirigirAFormulario() {
-		return "redirect:/alumno/formulario";
+		return "holis";
 	}
 }

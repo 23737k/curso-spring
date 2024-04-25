@@ -3,8 +3,11 @@ package dominio.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import dominio.Alumno;
 import jakarta.validation.Valid;
@@ -36,9 +39,6 @@ public class AlumnoController {
 	@RequestMapping("/procesarFormulario")
 	public String procesarFormulario(@Valid @ModelAttribute("unAlumno") Alumno alumno, BindingResult resultadoValidacion) {
 		
-		if(resultadoValidacion.hasErrors())
-			return "AlumnoFormulario";
-		else
 			return "RegistroConfirmacion";
 	}
 	/*

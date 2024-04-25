@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Formulario</title>
+</head>
+<body>
+    <form action="#" class="container" th:action="@{/alumno/procesarFormulario}" th:object="${unAlumno}" method="post"> 
+        <legend>Complete sus datos</legend>
+       	<label for="nombre" >Nombre: </label><input type="text" id="nombre" th:field="*{nombre}"/>		
+       	<br>
+       	<label for="apellido">Apellido:</label> <input type="text" id="apellido" th:field="*{apellido}"/>
+       	<br><br>
+       	<br><br>
+       	<label for="email">E-mail:</label> <input type="email" id="email" />
+       	<br><br>
+       	Materia Optativa: 
+       	<select >
+       		<option value="arte" label="Arte"/>
+       		<option value="danza" label="Danza"/>
+       		<option value="football" label="Football"/>
+       		<option value="volley" label="Volley"/>
+       	</select>
+       	<br><br>
+       	Lugar de Estudios: <br>
+       	<input type="radio" id="argentina" value="Argentina" /> <label for="argentina"> Argentina</label> <br>
+       	<input type="radio" id="chile" value="Chile" /> <label for="chile"> Chile</label><br>
+       	<input type="radio" id="brasil" value="Brasil" /> <label for="brasil">Brasil</label>  <br>
+       <br><br>
+       Idiomas: <br>
+       <input type="checkbox" id="ingles" value="ingles"/> <label for="ingles">Ingles</label>  <br>
+       <input type="checkbox" id="frances" value="frances"/> <label for="frances">Frances</label> <br>
+       <input type="checkbox" id="aleman"  value="aleman"/> <label for="aleman">Aleman</label> <br>
+       <input type="checkbox" id="chino"  value="chino"/> <label for="chino">Chino</label> <br>
+       <br><br><br>
+              	
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

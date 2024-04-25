@@ -9,10 +9,13 @@ public class Alumno {
 	@Size(min=2, message="El campo nombre debe tener una longitud minima de 2 caracteres")
 	private String nombre;
 	private String apellido;
+	/*
 	@NotNull
 	@Max(value= 100) 
 	@Min(value=10, message="El campo edad debe tener un valor entre 10-100")
+	*/
 	private int edad;
+	
 	@NotNull
 	@Email
 	private String email;
