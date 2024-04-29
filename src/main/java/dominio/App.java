@@ -10,7 +10,7 @@ public class App {
 
 	public static void main(String[] args) {
 		SpringApplication.run(App.class,args);
-		System.out.println("Executed Main Application");
+		System.out.println("Executed Main dgfhdfghApplication");
 	
 		ConexionConBBDD.getInstance();
 		
