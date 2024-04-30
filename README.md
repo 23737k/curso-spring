@@ -11,4 +11,5 @@
   - Thymeleaf
   - MySQL Driver
 - Junit 5
+- Dockerfile para deploy
 
