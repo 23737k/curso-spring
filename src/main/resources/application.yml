@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: curso-spring
+  mvc:
+    view:
+      suffix: .jsp
+      prefix: /WEB-INF/jsp/
+  datasource:
+    url: jdbc:mysql://sql10.freesqldatabase.com:3306/sql10699337
+    username: sql10699337
+    password: MLeR2Lz8Ii
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+
+server:
+  port: 80
