@@ -1,8 +1,14 @@
-## Proyecto plantilla
-**¿Qué contiene?**
+# Proyecto plantilla
+### ¿Qué contiene?
 
-- Maven
+- Java 17
+- Maven 
+- Configuración de Dynamic Web Project
 - Spring Boot
-- Configuración de Webapp
-- Configuración para conexión con BBDD MySQL
-- Hibernate
+  - Lombok
+  - Spring JPA (Hibernate)
+  - Spring Web
+  - Thymeleaf
+  - MySQL Driver
+- Junit 5
+
