@@ -1,8 +1,11 @@
 package dominio.repositories;
 
 import dominio.entities.Author;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 
 public interface AuthorRepository extends JpaRepository<Author, Integer> {
 
@@ -23,6 +26,19 @@ public interface AuthorRepository extends JpaRepository<Author, Integer> {
   // select * from author where first_name in ('kenti', 'pedro')   ->   BUSCA AQUELLOS QUE SE ENCUENTREN EN LA LISTA ESPECIFICADA
   List<Author> findByFirstNameInIgnoreCase(List<String> firstNames);
 
+  @Transactional
+  @Modifying
+  @Query("update Author a set a.age = :age where a.id = :id")
+  void updateAge(int id, int age);
+
+  @Transactional
+  @Modifying
+  @Query("update Author a set a.age = :age")    // a diferencia del anterior modifica el campo edad de todos los registros
+  void updateAuthorsAge(int age);
+
+
+
+
 }
 
 /*
@@ -36,8 +52,13 @@ public interface AuthorRepository extends JpaRepository<Author, Integer> {
 *                     Sin embargo, hay muchos métodos autogenerados que no aplican siempre. Por ej: findByPropertyAfter/Before/Between, etc se utiliza para
 *                     fechas. No funcionará por ejemplo para un campo de tipo String o int.
 *
-*       Nota: findByAll tiene el mismo comportamiento
+*                     Nota: findByAll tiene el mismo comportamiento
 *
+* Queries: se pueden definir métodos que ejecuten queries sql con la anotación @Query. Sin embargo esta anotación sólo soporta SELECTs
+*   @Modifying: Esta anotación se agrega para poder potenciar las queries de tal forma que podamos ejecutar también: UPDATE, INSERT, DELETE e incluso DDL
+*   @Transactional: Debemos agregar esta anotación para que Spring ejecute este método dentro de una transacción. De otra manera nos saldrá una excepción
+*                   Los métodos de la interfaz CRUD (findBy... updateBy... deleteBy... etc) todos son @Transactional por defecto.
+*                   Sin embargo si agregamos nuestras propias queries debemos indicarles que los ejecute en una transacción.
 *
 *
 *
