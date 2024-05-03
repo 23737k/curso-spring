@@ -1,22 +1,27 @@
 package dominio.empleados;
 
 import dominio.informes.CreacionDeInforme;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-
+@Getter
+@Setter
 @Component
 public class SecretarioEmpleado implements Empleado {
-	@Autowired
-	@Qualifier("informeTrimestre2")
-	private CreacionDeInforme informe;
 
-	@Value("${correoElectronico}")			//colocamos el nombre de la propiedad que figura en el archivo de propiedades
+	private final CreacionDeInforme informe;
+
+	@Value("${email.empresa}")			//colocamos el nombre de la propiedad que figura en el archivo de propiedades
 	private String email;
-	@Value("${nombreDeLaEmpresa}")
+	@Value("${nombre.empresa}")
 	private String nombreEmpresa;
-	
+
+	public SecretarioEmpleado(@Qualifier("informeTrimestre2") CreacionDeInforme informe) {
+		this.informe = informe;
+	}
+
 	@Override
 	public String getTareas() {
 		return "Hago las tareas del secretario";
@@ -27,11 +32,4 @@ public class SecretarioEmpleado implements Empleado {
 		return informe.getInforme();
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public String getNombreEmpresa() {
-		return nombreEmpresa;
-	}
 }
