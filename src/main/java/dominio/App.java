@@ -1,7 +1,5 @@
 package dominio;
 
-import dominio.empleados.Empleado;
-import dominio.empleados.SecretarioEmpleado;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
