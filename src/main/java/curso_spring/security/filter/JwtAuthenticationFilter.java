@@ -1,6 +1,6 @@
-package curso_spring.config;
+package curso_spring.security.filter;
 
-import curso_spring.services.JwtService;
+import curso_spring.security.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

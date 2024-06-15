@@ -1,8 +1,8 @@
-package curso_spring.services;
+package curso_spring.security.services;
 
-import curso_spring.config.auth.AuthenticationRequest;
-import curso_spring.config.auth.AuthenticationResponse;
-import curso_spring.config.auth.RegisterRequest;
+import curso_spring.security.dto.request.AuthenticationRequest;
+import curso_spring.security.dto.response.AuthenticationResponse;
+import curso_spring.security.dto.request.RegisterRequest;
 import curso_spring.dominio.user.Role;
 import curso_spring.repositories.UserRepository;
 import curso_spring.dominio.user.User;

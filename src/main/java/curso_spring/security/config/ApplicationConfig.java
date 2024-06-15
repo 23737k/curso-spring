@@ -1,4 +1,4 @@
-package curso_spring.config;
+package curso_spring.security.config;
 
 import curso_spring.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

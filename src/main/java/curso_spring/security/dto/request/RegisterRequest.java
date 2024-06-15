@@ -1,4 +1,4 @@
-package curso_spring.config.auth;
+package curso_spring.security.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

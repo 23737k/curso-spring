@@ -1,4 +1,4 @@
-package curso_spring.services;
+package curso_spring.security.services;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

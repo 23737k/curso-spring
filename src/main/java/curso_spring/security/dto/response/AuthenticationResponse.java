@@ -1,4 +1,4 @@
-package curso_spring.config.auth;
+package curso_spring.security.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class AuthenticationRequest {
-  private String email;
-  private String password;
+public class AuthenticationResponse {
+  private String token;
 }

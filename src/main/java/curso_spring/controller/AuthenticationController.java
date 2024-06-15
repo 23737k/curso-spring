@@ -1,9 +1,9 @@
 package curso_spring.controller;
 
-import curso_spring.config.auth.AuthenticationRequest;
-import curso_spring.config.auth.AuthenticationResponse;
-import curso_spring.config.auth.RegisterRequest;
-import curso_spring.services.AuthenticationService;
+import curso_spring.security.dto.request.AuthenticationRequest;
+import curso_spring.security.dto.response.AuthenticationResponse;
+import curso_spring.security.dto.request.RegisterRequest;
+import curso_spring.security.services.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

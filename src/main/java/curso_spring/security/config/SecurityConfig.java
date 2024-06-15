@@ -1,7 +1,8 @@
-package curso_spring.config;
+package curso_spring.security.config;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
+import curso_spring.security.filter.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
