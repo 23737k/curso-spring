@@ -8,6 +8,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,9 +21,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-  //Este servicio se encargará de manipular el jwt y brindarnos todos los datos que necesitemos de este.
+  //Este servicio se encargará de manipular el jwt y brindarnos todos los datos (claims) que necesitemos de este.
   private final JwtService jwtService;
-
+  private final UserDetailsService userDetailsService;
 
   //Recibe las request y response, lo que le permite interceptarlas y por ejemplo modificarlas.
   //Ademas recibe un FilterChain, que utiliza el patron Chain of Responsibility. Es decir cuando se llame a doFilterInternal, se llamará al próximo filtro y este al
@@ -40,7 +45,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     }
     //Si el header existe y su valor es válido, obtengo del mismo el token.
     jwt = authHeader.substring(7);
-    //obtenemos
+
     userEmail = jwtService.extractUserEmail(jwt);
+
+    if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+      UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+      if(jwtService.validateToken(jwt, userDetails))
+      {
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authToken);
+      }
+    }
+    filterChain.doFilter(request, response);
   }
 }
