@@ -1,6 +1,5 @@
 package curso_spring.dominio.user;
 
-import curso_spring.dominio.Role;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;

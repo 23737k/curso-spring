@@ -1,4 +1,4 @@
-package curso_spring.dominio.controller;
+package curso_spring.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class DemoController {
 	 
-	@GetMapping("/")
+	@GetMapping("/greeting")
 	public ResponseEntity<?> greeting() {
 		return new ResponseEntity<>("Hola", HttpStatus.OK);
 	}

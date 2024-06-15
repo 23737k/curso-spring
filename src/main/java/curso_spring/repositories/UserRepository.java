@@ -1,4 +1,4 @@
-package curso_spring.dominio.repositories;
+package curso_spring.repositories;
 
 import curso_spring.dominio.user.User;
 import java.util.Optional;

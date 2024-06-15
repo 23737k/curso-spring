@@ -1,4 +1,4 @@
-package curso_spring.dominio.controller;
+package curso_spring.controller;
 
 import curso_spring.config.auth.AuthenticationRequest;
 import curso_spring.config.auth.AuthenticationResponse;
@@ -22,10 +22,10 @@ public class AuthenticationController {
   public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
     return ResponseEntity.ok(authenticationService.register(request));
   }
-
   @PostMapping("/authenticate")
-  public ResponseEntity<AuthenticationResponse> register(@RequestBody AuthenticationRequest request) {
+  public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
     return ResponseEntity.ok(authenticationService.authenticate(request));
   }
+
 
 }
