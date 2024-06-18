@@ -1,6 +1,7 @@
 package curso_spring.security.filter;
 
 import curso_spring.security.services.JwtService;
+import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -47,18 +48,25 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     //Si el header existe y su valor es válido, obtengo del mismo el token.
     jwt = authHeader.substring(7);
 
-    userEmail = jwtService.extractUserEmail(jwt);
+    try {
+      userEmail = jwtService.extractUserEmail(jwt);
 
-    if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-      UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
-      if(jwtService.validateToken(jwt, userDetails))
-      {
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-        SecurityContextHolder.getContext().setAuthentication(authToken);
+      if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+        if(jwtService.validateToken(jwt, userDetails))
+        {
+          UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+          authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+          SecurityContextHolder.getContext().setAuthentication(authToken);
+        }
       }
+      filterChain.doFilter(request, response);
+    } catch (ExpiredJwtException e) {
+      // Manejo específico de la excepción ExpiredJwtException
+      response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      response.setContentType("application/json");
+      response.getWriter().write("{\"error\": \"Token JWT expirado. Por favor, inicie sesión nuevamente.\"}");
     }
-    filterChain.doFilter(request, response);
   }
 
 
