@@ -17,6 +17,8 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+
 //Creamos el JwtAuthFilter que tiene que extender OncePerRequestFilter para indicarle a Spring que debe estar activo cada vez que se haga una request
 //Es decir que con cada request del usuario se disparará este JwtAuthFilter y hará su trabajo
 @Component
@@ -33,9 +35,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
   protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
                                   @NonNull FilterChain filterChain) throws ServletException, IOException {
 
+    if(request.getServletPath().contains("/api/auth")){
+      filterChain.doFilter(request,response);
+      return;
+    }
 
     //Obtenemos el Authorization Header de la request
-    final String authHeader = request.getHeader("Authorization");
+    final String authHeader = request.getHeader(AUTHORIZATION);
     final String jwt;       //aqui guardaremos el jwt
     final String userEmail;
 
@@ -65,7 +71,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
       // Manejo específico de la excepción ExpiredJwtException
       response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
       response.setContentType("application/json");
-      response.getWriter().write("{\"error\": \"Token JWT expirado. Por favor, inicie sesión nuevamente.\"}");
+      response.getWriter().write("{\"error\": \"JWT Token expired. Please, authenticate again to get a new token.\"}");
     }
   }
 

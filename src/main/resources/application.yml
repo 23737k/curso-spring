@@ -1,6 +1,10 @@
 spring:
   application:
     name: curso-spring
+    security:
+      jwt:
+        expiration: 3600000 # 1 hora
+        secret-key: kDijZVBL6AZVhuDgorqNtI0EQWhun9oGfspAndEF7wbJq50emiHKy9velG9qjpyk
   datasource:
     url: jdbc:mysql://localhost/pruebas
     username: root
@@ -11,6 +15,6 @@ spring:
       ddl-auto: update
     database: mysql
     show-sql: true
-
 server:
   port: 80
+
